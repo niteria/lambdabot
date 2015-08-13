@@ -1,0 +1,26 @@
+diff --git a/mueval.cabal b/mueval.cabal
+index ccd6fa8..fdf1cf7 100644
+--- a/mueval.cabal
++++ b/mueval.cabal
+@@ -35,17 +35,17 @@ library
+         build-depends:       base>=4.4 && < 5, containers, directory, mtl>2, filepath, unix, process,
+                              hint>=0.3.1, show>=0.3, Cabal, extensible-exceptions, simple-reflect,
+                              QuickCheck
+-        ghc-options:         -Wall -static
++        ghc-options:         -Wall
+ 
+ executable mueval-core
+            main-is:       main.hs
+            build-depends: base
+-           ghc-options:   -Wall -static -threaded
++           ghc-options:   -Wall -threaded
+ 
+-executable mueval
++executable mueval.real
+            main-is:       watchdog.hs
+            build-depends: base
+-           ghc-options:   -Wall -static -threaded
++           ghc-options:   -Wall -threaded
+ 
+ source-repository head
+   type:     git
