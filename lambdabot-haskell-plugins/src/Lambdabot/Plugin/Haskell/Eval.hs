@@ -61,7 +61,7 @@ args load src exts trusted = concat
     , map ("-s" ++) trusted
     , map ("-X" ++) exts
     , ["--no-imports", "-l", load]
-    , ["--expression=" ++ src]
+    , ["--expression=" ++ decodeString src]
     , ["+RTS", "-N", "-RTS"]
     ]
 
@@ -83,8 +83,8 @@ runGHC src = do
     case (out,err) of
         ([],[]) -> return "Terminated\n"
         _       -> do
-            let o = munge out
-                e = munge err
+            let o = mungeEnc out
+                e = mungeEnc err
             return $ case () of {_
                 | null o && null e -> "Terminated\n"
                 | null o           -> e
